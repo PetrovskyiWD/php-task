@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Twitter search</title>
+
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css">
+  <link rel="stylesheet" href="/theme/css/style.css">
+</head>
+<body>
+  <main>
+    <h1><a href="/">Search by Twitter</a></h1>
+
+    <form action="" method="post">
+      <label for="seach">Search Tweets:</label>
+      <input type="search" id="search" name="searchword" value="{{searchword}}">
+      <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+    </form>
+
+      {% if searchword %}
+        <div class="tweets-wrap">
+          {% for tweet in tweets.statuses %}
+            <div class="tweet-item">
+              <div class="user-profile">
+                <img src="{{tweet.user.profile_image_url}}" alt="">
+                <div class="user-name">
+                  <span>{{tweet.user.name}}</span>
+                  <span>@{{tweet.user.screen_name}}</span>
+                </div>
+              </div>
+
+              <p>{{tweet.text}}</p>
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+  </main>
+</body>
+</html>
